@@ -40,4 +40,23 @@ Public Class Form1
         exporter.ExportOsobToCsvWithHelper(_zoznam, subor)
 
     End Sub
+
+    Private Sub NacitajToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NacitajToolStripMenuItem.Click
+        Dim subor As String
+        Using ofd As New OpenFileDialog
+            ofd.Filter = "CSV |*.csv | TXT |*.txt | Vsetko|*.*"
+            ofd.FileName = "data.csv"
+
+            Dim vysledok = ofd.ShowDialog
+
+            If vysledok = DialogResult.Cancel Then Return
+
+            subor = ofd.FileName
+        End Using
+
+        Dim importer As New CSVImporter
+        _zoznam = importer.ImportOsobFromCsv(subor)
+
+        Me.DataGridView1.DataSource = _zoznam
+    End Sub
 End Class

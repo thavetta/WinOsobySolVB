@@ -34,6 +34,7 @@ Public Class CSVExporter
 
                 csvWriter.WriteRecords(zoznam)
             End Using
+            writer.Close()
         End Using
 
 
