@@ -59,4 +59,19 @@ Public Class Form1
 
         Me.DataGridView1.DataSource = _zoznam
     End Sub
+
+    Private Sub DataGridView1_RowPrePaint(sender As Object, e As DataGridViewRowPrePaintEventArgs) Handles DataGridView1.RowPrePaint
+        Dim row As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+
+        Dim osoba As Osoba = TryCast(row.DataBoundItem, Osoba)
+
+        If osoba IsNot Nothing Then
+            If osoba.Plat > 1999 Then
+                row.DefaultCellStyle.BackColor = Color.Blue
+            Else
+                row.DefaultCellStyle.BackColor = Color.Yellow
+            End If
+        End If
+
+    End Sub
 End Class
