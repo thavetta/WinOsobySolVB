@@ -1,4 +1,8 @@
+Imports System.Globalization
 Imports System.IO
+Imports System.Text
+Imports CsvHelper
+Imports CsvHelper.Configuration
 Imports Osoby
 
 Public Class CSVExporter
@@ -16,5 +20,22 @@ Public Class CSVExporter
             komplet.Add(riadok)
         Next
         File.WriteAllLines(subor, komplet)
+    End Sub
+
+    Public Sub ExportOsobToCsvWithHelper(zoznam As IEnumerable(Of Osoba), Optional subor As String = "data.csv")
+        'Dim config = CsvConfiguration.FromAttributes(Of Osoba)()
+
+        Dim config As New CsvConfiguration(CultureInfo.InvariantCulture) With
+            {.Delimiter = "|"}
+
+        Using writer As New StreamWriter(subor)
+            Using csvWriter As New CsvWriter(writer, config)
+
+
+                csvWriter.WriteRecords(zoznam)
+            End Using
+        End Using
+
+
     End Sub
 End Class

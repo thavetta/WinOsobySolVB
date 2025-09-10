@@ -37,7 +37,7 @@ Public Class Form1
         End Using
 
         Dim exporter As New CSVExporter
-        exporter.ExportOsobToCsv(_zoznam, subor)
+        exporter.ExportOsobToCsvWithHelper(_zoznam, subor)
 
     End Sub
 End Class
