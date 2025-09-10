@@ -22,6 +22,7 @@ Public Class Form1
     Private Sub UložCSVToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UložCSVToolStripMenuItem.Click
 
         Dim subor As String
+
         Using sfd As New SaveFileDialog
 
             sfd.Filter = "CSV |*.csv | TXT |*.txt | Vsetko|*.*"
